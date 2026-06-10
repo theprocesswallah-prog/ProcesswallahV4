@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 3. Mobile Navigation Controls
+    // 3. Mobile Navigation Controls (Hamburger Integration)
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
     const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 4. Consultation Form Submissions Interceptor (Generates Pre-Filled Email Action)
+    // 4. Consultation Form Submissions Interceptor (Prefills Client mailto)
     const consultationForm = document.querySelector('.consultation-form');
     consultationForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -154,16 +154,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const mobile = document.getElementById('form-mobile').value;
         const message = document.getElementById('form-message').value;
 
-        const subject = encodeURIComponent(`Processwallah Inquiry — ${company}`);
+        const subject = encodeURIComponent(`Processwallah Consultation Request — ${company}`);
         const body = encodeURIComponent(
             `Name: ${name}\n` +
             `Company: ${company}\n` +
             `Email: ${email}\n` +
             `Mobile: ${mobile}\n\n` +
-            `Operational Challenge Description:\n${message}`
+            `Describe Your Primary Process Bottleneck:\n${message}`
         );
 
-        // Launches standard email program with pre-filled inputs
+        // Triggers standard operating mail client cleanly with prefilled values
         window.location.href = `mailto:info@processwallah.com?subject=${subject}&body=${body}`;
     });
 });
