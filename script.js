@@ -1,55 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Interactive Modal Configuration for Systems & Solutions
-    const modalData = {
+    // 1. Detailed System Concepts for the Solutions Modal
+    const systemDatabase = {
         'customer-portal': {
-            title: 'Customer Portal — Framework Design',
-            concept: 'A direct digital environment connected to order books, showing work completion stages directly to downstream distribution clients.',
-            workflow: 'Client places order details -> System pulls workflow logs from line execution layers -> Real-time status rendered on client panel with dispatch delivery ETA forecasts.',
-            benefits: 'Substantially reduces routine client verification phone calls, provides reliable delivery estimates, and creates automated tracking pipelines.',
-            approach: 'Developed on key SQL database endpoints connected with low-maintenance micro-frontends.'
+            title: 'Customer Portal Framework',
+            problem: 'Clients rely on continuous phone calls and emails to check purchase order progress and shipping status.',
+            approach: 'Develop a read-only database sync that publishes order status data from internal dispatch logs directly to a secure web access page.',
+            outcome: 'Eliminates redundant communication and allows administrative staff to focus on actual job tracking operations.'
         },
         'bom-automation': {
             title: 'BOM Automation Framework',
-            concept: 'Automating multi-tiered Bill of Materials sheets, verifying part numbers, stock, and structural properties.',
-            workflow: 'System imports raw engineering exports -> Maps parent-child components -> Automates calculations across store quantities -> Directly targets inventory gaps.',
-            benefits: 'Corrects inventory estimation human errors and cuts standard BOM planning timelines.',
-            approach: 'Built using optimized scripts connecting sheet registers to warehouse tables.'
+            problem: 'Multi-level Bill of Materials lists are manually audited, leading to purchase order mistakes and sudden material shortages.',
+            approach: 'Write automated validation logic that matches CAD file parameters and spreadsheet rows directly with existing physical store records.',
+            outcome: 'Drastically reduces raw material purchase errors and eliminates planning downtime.'
         },
         'work-order-automation': {
             title: 'Work Order Automation Workflow',
-            concept: 'Immediate dispatching of production jobs from sales triggers to work teams without requiring paper transfers.',
-            workflow: 'Sales system registers raw order -> Script generates detailed work orders -> Validates tool requirements -> Automatically appends instructions to floor displays.',
-            benefits: 'Minimizes processing lag between raw sales confirmations and line setup executions.',
-            approach: 'Low-latency workflow routing and automated message systems built using direct Google Apps Script engines.'
+            problem: 'Time is lost converting sales order agreements into physical route sheets for the production line.',
+            approach: 'Deploy automated scripts that generate, validate, and queue job cards immediately when a deal is closed in CRM databases.',
+            outcome: 'Reduces setup wait time and ensures the production floor has correct, updated job specifications.'
         },
         'production-planning': {
             title: 'Production Planning Framework',
-            concept: 'Constraint-driven shop sequencing built around machine capacity levels, staff constraints, and raw supply schedules.',
-            workflow: 'Pending order pool -> Dynamic capacity analyzer estimates scheduling options -> Team updates output boards based on schedules.',
-            benefits: 'Provides realistic scheduling ranges to prevent unexpected idle hours and track output limits.',
-            approach: 'Developed through custom capacity planning sheets linked to priority orders.'
+            problem: 'Inflexible floor plans rely on manual estimation, causing toolroom bottlenecks and delayed deliveries.',
+            approach: 'Construct dynamic spreadsheet layouts that sync equipment load limits directly with raw material arrival checklists.',
+            outcome: 'Optimizes assembly flow and provides customer support teams with accurate shipping dates.'
         },
         'inspection-reporting': {
             title: 'Inspection & Reporting Framework',
-            concept: 'Mobile interfaces allowing inspectors to record dimensions and check-passes on the spot.',
-            workflow: 'Quality checklist scan -> Record deviations -> Out-of-spec inputs automatically freeze inventory updates -> Notifies quality supervisor.',
-            benefits: 'Allows rapid processing of scrap records and eliminates paper register logs.',
-            approach: 'Constructed using lightweight web interfaces connected directly to tracking database spreadsheets.'
+            problem: 'SOP compliance and defect logs are recorded on physical paper, making quality control trends difficult to analyze.',
+            approach: 'Implement simple, local mobile data-entry templates used at point-of-inspection to register dimensions, values, and outcomes.',
+            outcome: 'Flags defects on-site, logs rework statistics instantly, and locks defective batches automatically.'
         },
         'mis-dashboard': {
-            title: 'MIS Dashboard & Analytics',
-            concept: 'Consolidating production units, line metrics, scrap records, and machine downtime logs into single-page views.',
-            workflow: 'Raw daily team sheets collect floor data -> Script compiles totals -> Dashboard generates updated output charts.',
-            benefits: 'Keeps management aligned using current, validated numbers instead of lagging weekly reports.',
-            approach: 'Created through integrated visualization dashboards synced with database arrays.'
+            title: 'MIS Dashboard Systems',
+            problem: 'Supervisors construct end-of-week operation metrics using old data, making immediate corrections impossible.',
+            approach: 'Aggregate daily output records from terminal databases into clean, readable performance dashboards.',
+            outcome: 'Enables managers to make prompt operational corrections with clear data from active shifts.'
         },
         'document-control': {
             title: 'Document Control & Traceability',
-            concept: 'Central tracking index ensuring shop terminals only load approved engineering drawing versions.',
-            workflow: 'Supervisor loads updated design -> Old files archive -> Terminals auto-update -> Floor scans verify active versions.',
-            benefits: 'Minimizes tool scrap caused by referencing legacy designs.',
-            approach: 'Developed as a secure, role-restricted folder network with fast search tools.'
+            problem: 'Technicians mistakenly manufacture parts using older, unapproved design revisions.',
+            approach: 'Set up a centralized, secure digital document index linked to active shop routing terminals.',
+            outcome: 'Ensures that operators only work with approved drawing versions, reducing raw material scrap.'
         }
     };
 
@@ -58,89 +51,88 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalBody = document.getElementById('modal-body');
     const closeModalBtn = document.querySelector('.close-modal-btn');
 
-    document.querySelectorAll('.view-details-btn').forEach(button => {
-        button.addEventListener('click', (e) => {
+    document.querySelectorAll('.view-details-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
             const systemKey = e.currentTarget.getAttribute('data-system');
-            const data = modalData[systemKey];
+            const data = systemDatabase[systemKey];
 
             if (data) {
                 modalTitle.textContent = data.title;
                 modalBody.innerHTML = `
                     <div class="modal-section">
-                        <div class="modal-section-title">Concept</div>
-                        <p>${data.concept}</p>
+                        <div class="modal-section-title">The Problem</div>
+                        <p>${data.problem}</p>
                     </div>
                     <div class="modal-section">
-                        <div class="modal-section-title">Workflow</div>
-                        <p>${data.workflow}</p>
-                    </div>
-                    <div class="modal-section">
-                        <div class="modal-section-title">Business Benefits</div>
-                        <p>${data.benefits}</p>
-                    </div>
-                    <div class="modal-section">
-                        <div class="modal-section-title">Approach</div>
+                        <div class="modal-section-title">The Practical Approach</div>
                         <p>${data.approach}</p>
+                    </div>
+                    <div class="modal-section">
+                        <div class="modal-section-title">Expected Business Outcome</div>
+                        <p>${data.outcome}</p>
                     </div>
                 `;
                 modal.classList.add('active');
+                modal.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden';
             }
         });
     });
 
-    const closeModal = () => {
+    const hideModal = () => {
         modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     };
 
-    closeModalBtn.addEventListener('click', closeModal);
+    closeModalBtn.addEventListener('click', hideModal);
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-            closeModal();
+            hideModal();
         }
     });
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
+            hideModal();
         }
     });
 
 
-    // 2. Interactive Feature Gallery (Showcase)
+    // 2. Interactive Feature Gallery for Section 6 (Case Study Showcase)
     const galleryThumbs = document.querySelectorAll('.gallery-thumbnail');
     const mainShowcaseImg = document.getElementById('main-showcase-img');
 
     galleryThumbs.forEach(thumb => {
         thumb.addEventListener('click', (e) => {
             galleryThumbs.forEach(t => t.classList.remove('active'));
-            
+
             const selectedThumb = e.currentTarget;
             selectedThumb.classList.add('active');
+
+            const sourceImage = selectedThumb.getAttribute('data-img');
             
-            const newImgSrc = selectedThumb.getAttribute('data-img');
-            mainShowcaseImg.style.opacity = '0.3';
-            
+            // Subtle transition effect
+            mainShowcaseImg.style.opacity = '0.4';
             setTimeout(() => {
-                mainShowcaseImg.setAttribute('src', newImgSrc);
+                mainShowcaseImg.setAttribute('src', sourceImage);
                 mainShowcaseImg.style.opacity = '1';
-            }, 150);
+            }, 120);
         });
     });
 
 
-    // 3. Responsive Mobile Menu
+    // 3. Responsive Mobile Menu Controls
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
-    const toggleMenu = () => {
+    const toggleMobileMenu = () => {
         mobileMenuOverlay.classList.toggle('active');
         document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
     };
 
-    mobileNavToggle.addEventListener('click', toggleMenu);
+    mobileNavToggle.addEventListener('click', toggleMobileMenu);
 
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
