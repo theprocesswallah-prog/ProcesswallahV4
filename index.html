@@ -1,884 +1,1189 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Processwallah — Manufacturing Process Control & Practical Automation</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+/* Color palette and design tokens representing a premium industrial identity */
+:root {
+    --primary: #0f172a;        /* Deep technical slate */
+    --primary-light: #1e293b;  /* Matte slate gray */
+    --accent: #d97706;         /* Industrial amber */
+    --accent-hover: #b45309;   /* High-contrast dark amber */
+    --bg-light: #f8fafc;       /* Off-white */
+    --bg-card: #ffffff;
+    --text-dark: #0f172a;
+    --text-muted: #475569;     /* Slate text for body content */
+    --border-color: #cbd5e1;   /* Consistent layout border */
+    --border-focus: #3b82f6;   /* Input field selection blue */
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --max-width: 1200px;
+    --border-radius: 2px;      /* Sharp, professional edge styling */
+    --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-    <!-- Header / Navigation -->
-    <header class="site-header">
-        <div class="container header-container">
-            <a href="#" class="logo">
-                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                    <line x1="8" y1="21" x2="16" y2="21"></line>
-                    <line x1="12" y1="17" x2="12" y2="21"></line>
-                </svg>
-                <span>PROCESSWALLAH</span>
-            </a>
-            <nav class="main-nav">
-                <a href="#about">About</a>
-                <a href="#challenges">Operational Challenges</a>
-                <a href="#before-after">Process Shift</a>
-                <a href="#systems">Systems & Solutions</a>
-                <a href="#showcase">Task System Showcase</a>
-                <a href="#fail-analysis">Workflow Strategy</a>
-                <a href="#services">Services</a>
-                <a href="#contact" class="nav-cta">Book Free Process Review</a>
-            </nav>
-            <button class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
-        </div>
-    </header>
+/* Base structural rules */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    <!-- Mobile Navigation Overlay -->
-    <div class="mobile-menu-overlay">
-        <div class="mobile-menu-content">
-            <a href="#about" class="mobile-link">About</a>
-            <a href="#challenges" class="mobile-link">Operational Challenges</a>
-            <a href="#before-after" class="mobile-link">Process Shift</a>
-            <a href="#systems" class="mobile-link">Systems & Solutions</a>
-            <a href="#showcase" class="mobile-link">Task System Showcase</a>
-            <a href="#fail-analysis" class="mobile-link">Workflow Strategy</a>
-            <a href="#services" class="mobile-link">Services</a>
-            <a href="#contact" class="mobile-link btn-mobile-contact">Book Free Process Review</a>
-        </div>
-    </div>
+html {
+    scroll-behavior: smooth;
+    font-family: var(--font-family);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
 
-    <!-- Section 1: Hero -->
-    <section class="hero-section">
-        <div class="container hero-grid">
-            <div class="hero-content">
-                <span class="hero-badge">Workflow Engineering over Software Selling</span>
-                <h1>Stop Managing Manufacturing Through WhatsApp, Excel & Endless Follow-Ups</h1>
-                <p class="hero-subheadline">Build structured systems for Planning, Purchase, Store, Production, Quality and Dispatch through practical automation and AI-integrated workflows.</p>
-                <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary">Book Free Process Review</a>
-                    <a href="#systems" class="btn btn-secondary">Explore Solutions</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="image-wrapper">
-                    <img src="images/task-dashboard.jpg" alt="Task Management System Dashboard Interface" class="img-responsive hero-img">
-                </div>
-            </div>
-        </div>
-        <!-- Trust Strip -->
-        <div class="trust-strip">
-            <div class="container trust-grid">
-                <div class="trust-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    <span>7+ Years Manufacturing Experience</span>
-                </div>
-                <div class="trust-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
-                    <span>Manufacturing Process Control</span>
-                </div>
-                <div class="trust-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                    <span>Workflow Automation</span>
-                </div>
-                <div class="trust-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                    <span>AI-Integrated Systems</span>
-                </div>
-            </div>
-        </div>
-    </section>
+body {
+    overflow-x: hidden;
+    background-color: #ffffff;
+}
 
-    <!-- Section 2: Founder Positioning (About Ahmed Arshi) -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image-column">
-                    <div class="profile-card">
-                        <img src="images/profile.jpg" alt="Ahmed Arshi — Manufacturing Process Control Professional" class="profile-img">
-                        <div class="profile-overlay-info">
-                            <h3>Ahmed Arshi</h3>
-                            <p class="profile-title">Manufacturing Process Control Professional</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-text-column">
-                    <span class="section-badge">Behind the Systems</span>
-                    <h2>Built From The Factory Floor</h2>
-                    <p class="lead-text">Processwallah was born from solving real manufacturing problems on the shop floor, not from learning software development in a quiet classroom.</p>
-                    <p class="body-text">I started directly in manufacturing operations, spending over 7 years learning and managing the direct realities of how material and information flow through different shop sections. This on-site exposure allows me to map and design resilient digital control points that operators actually adopt, rather than creating systems that collect digital dust.</p>
-                    
-                    <h3 class="experience-subheading">Practical Floor Experience Applied to Workflows:</h3>
-                    <div class="domain-tag-cloud">
-                        <span class="domain-tag">Sales Administration</span>
-                        <span class="domain-tag">Purchase Management</span>
-                        <span class="domain-tag">Store Operations & Stock Controls</span>
-                        <span class="domain-tag">Incoming Quality Control (IQC)</span>
-                        <span class="domain-tag">Material Planning</span>
-                        <span class="domain-tag">Production Planning</span>
-                        <span class="domain-tag">WIP Tracking & Job Sheets</span>
-                        <span class="domain-tag">Dispatch Verification & Delivery Logistics</span>
-                        <span class="domain-tag">MIS & Executive Reporting</span>
-                        <span class="domain-tag">Operational Process Control</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
 
-    <!-- Section 3: What Problems I Help Solve -->
-    <section id="challenges" class="challenges-section">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-badge">Diagnostic Analysis</span>
-                <h2>Common Manufacturing Challenges</h2>
-                <p class="section-desc">Software is only useful when it targets specific operational leaks. Below are the core issues we identify and resolve.</p>
-            </div>
-            
-            <div class="cards-grid">
-                <!-- Card 1 -->
-                <div class="challenge-card">
-                    <div class="challenge-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    </div>
-                    <h3>Manual Follow-Ups</h3>
-                    <p class="challenge-impact"><strong>Business Impact:</strong> Production cycles stall because coordinators spend half their day chasing floor updates via phone and messaging groups instead of preparing machine workloads.</p>
-                </div>
-                <!-- Card 2 -->
-                <div class="challenge-card">
-                    <div class="challenge-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    </div>
-                    <h3>Reporting Delays</h3>
-                    <p class="challenge-impact"><strong>Business Impact:</strong> Floor supervisors compile performance metrics days after completion. This lag prevents managers from making prompt adjustments during active shifts.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="challenge-card">
-                    <div class="challenge-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                    </div>
-                    <h3>Inventory Visibility Issues</h3>
-                    <p class="challenge-impact"><strong>Business Impact:</strong> Assembly stages halt suddenly due to unexpected material stockouts, while working capital remains tied up in slow-moving raw materials.</p>
-                </div>
-                <!-- Card 4 -->
-                <div class="challenge-card">
-                    <div class="challenge-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                    </div>
-                    <h3>Department Coordination Problems</h3>
-                    <p class="challenge-impact"><strong>Business Impact:</strong> Information gaps between purchase, store, and planning teams lead to incorrect material orders, causing schedule changes and machine idle time.</p>
-                </div>
-                <!-- Card 5 -->
-                <div class="challenge-card">
-                    <div class="challenge-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    </div>
-                    <h3>Lack of Accountability</h3>
-                    <p class="challenge-impact"><strong>Business Impact:</strong> When parts are rejected or deadlines are missed, the root cause remains hidden because assignments and approvals were verbally authorized.</p>
-                </div>
-                <!-- Card 6 -->
-                <div class="challenge-card">
-                    <div class="challenge-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="2" x2="22" y2="6"></line><path d="M7.5 11.5L2 6l5.5-5.5"></path><path d="M16.5 12.5l5.5 5.5-5.5 5.5"></path><line x1="6" y1="22" x2="2" y2="18"></line></svg>
-                    </div>
-                    <h3>Workflow Bottlenecks</h3>
-                    <p class="challenge-impact"><strong>Business Impact:</strong> Certain machinery assets sit idle because the preceding stage is bogged down by manual tracking methods and excessive paperwork.</p>
-                </div>
-                <!-- Card 7 -->
-                <div class="challenge-card">
-                    <div class="challenge-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                    </div>
-                    <h3>Data Duplication</h3>
-                    <p class="challenge-impact"><strong>Business Impact:</strong> Operational data is re-entered multiple times across paper logs, offline spreadsheets, and databases, introducing errors at every step.</p>
-                </div>
-                <!-- Card 8 -->
-                <div class="challenge-card">
-                    <div class="challenge-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
-                    </div>
-                    <h3>Disconnected Information Flow</h3>
-                    <p class="challenge-impact"><strong>Business Impact:</strong> Critical design adjustments or specific buyer requests are missed because shop teams refer to outdated instruction notes.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 
-    <!-- Section 4: Before vs After -->
-    <section id="before-after" class="before-after-section">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-badge">The Process Shift</span>
-                <h2>Transition to Structured Workflows</h2>
-                <p class="section-desc">Upgrading from chaotic manual operations to organized, systematic control.</p>
-            </div>
+.img-responsive {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
 
-            <div class="before-after-grid">
-                <!-- Before Panel -->
-                <div class="comparison-column state-before">
-                    <div class="state-header">
-                        <div class="indicator-dot red"></div>
-                        <h3>Traditional Operation</h3>
-                    </div>
-                    <ul class="comparison-list-group">
-                        <li>
-                            <strong>WhatsApp Tracking:</strong> Critical tasks get buried in group chats and personal threads.
-                        </li>
-                        <li>
-                            <strong>Phone Calls:</strong> Production updates require constantly calling operators to confirm completion.
-                        </li>
-                        <li>
-                            <strong>Excel Follow-Ups:</strong> Planners work with offline spreadsheets that quickly become out-of-date.
-                        </li>
-                        <li>
-                            <strong>Department Confusion:</strong> Teams coordinate through guesswork, creating friction on the shop floor.
-                        </li>
-                        <li>
-                            <strong>Manual Status Updates:</strong> Managers spend hours building day-end reports by chasing staff.
-                        </li>
-                    </ul>
-                </div>
+/* Typography styles */
+h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
 
-                <!-- After Panel -->
-                <div class="comparison-column state-after">
-                    <div class="state-header">
-                        <div class="indicator-dot green"></div>
-                        <h3>Systemized Operation</h3>
-                    </div>
-                    <ul class="comparison-list-group">
-                        <li>
-                            <strong>Live Visibility:</strong> Active jobs are clearly visible on a central dashboard.
-                        </li>
-                        <li>
-                            <strong>Clear Ownership:</strong> Every task has an assigned owner, with explicit checkpoints.
-                        </li>
-                        <li>
-                            <strong>Structured Workflow:</strong> Materials and orders move systematically through digital checkpoints.
-                        </li>
-                        <li>
-                            <strong>Automated Tracking:</strong> Alerts automatically notify the next department when a batch is cleared.
-                        </li>
-                        <li>
-                            <strong>Accountability & Faster Decisions:</strong> Live dashboards highlight bottlenecks, enabling quick adjustments.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
+}
 
-    <!-- Section 5: Systems & Solutions -->
-    <section id="systems" class="systems-section">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-badge">System Blueprints</span>
-                <h2>Systems & Solutions</h2>
-                <p class="section-desc">Practical frameworks engineered to organize factory workflows. Rather than generic boxed applications, these are customized to align with your shop-floor parameters.</p>
-            </div>
+h2 {
+    font-size: 1.85rem;
+    letter-spacing: -0.01em;
+}
 
-            <div class="solutions-grid">
-                <!-- System 1: Task Management System (Ready) -->
-                <div class="solution-card featured">
-                    <div class="sol-header">
-                        <span class="status-indicator ready">Fully Deployed Showcase</span>
-                        <h3>Task Management System</h3>
-                    </div>
-                    <div class="sol-body-content">
-                        <p class="block-label">Problem:</p>
-                        <p class="block-text">Departments coordinate using voice calls and unstructured messages, leading to missed assignments and delays.</p>
-                        <p class="block-label">Approach:</p>
-                        <p class="block-text">Establish a central task registry with clear department ownership, tracking paths, and secure login gates.</p>
-                        <p class="block-label">Business Outcome:</p>
-                        <p class="block-text font-highlight">A single source of truth that defines operational accountability and stops verbal delays.</p>
-                    </div>
-                    <div class="sol-actions">
-                        <a href="#showcase" class="btn btn-sm btn-primary btn-block">View System Interface Below</a>
-                    </div>
-                </div>
+h3 {
+    font-size: 1.2rem;
+}
 
-                <!-- System 2: Customer Portal -->
-                <div class="solution-card">
-                    <div class="sol-header">
-                        <span class="status-indicator setup">Under Construction</span>
-                        <h3>Customer Portal</h3>
-                    </div>
-                    <div class="sol-body-content">
-                        <p class="block-label">Problem:</p>
-                        <p class="block-text">Clients call frequently to check order status, tying up administration staff.</p>
-                        <p class="block-label">Approach:</p>
-                        <p class="block-text">Create a secure client portal connected to our internal dispatch logs.</p>
-                        <p class="block-label">Business Outcome:</p>
-                        <p class="block-text font-highlight">Reduces coordination calls and improves delivery transparently.</p>
-                    </div>
-                    <div class="sol-actions">
-                        <button class="btn btn-sm btn-outline-alt btn-block view-details-btn" data-system="customer-portal">View Framework Design</button>
-                    </div>
-                </div>
+p {
+    margin-bottom: 16px;
+    color: var(--text-muted);
+    font-size: 0.925rem;
+}
 
-                <!-- System 3: BOM Automation Framework -->
-                <div class="solution-card">
-                    <div class="sol-header">
-                        <span class="status-indicator design">Structured Framework</span>
-                        <h3>BOM Automation Framework</h3>
-                    </div>
-                    <div class="sol-body-content">
-                        <p class="block-label">Problem:</p>
-                        <p class="block-text">Manually checking complex Bills of Materials leads to procurement errors and stockouts.</p>
-                        <p class="block-label">Approach:</p>
-                        <p class="block-text">Automate drawing data validation and map parts to stock levels using scripts.</p>
-                        <p class="block-label">Business Outcome:</p>
-                        <p class="block-text font-highlight">Saves planning hours and prevents raw material ordering mistakes.</p>
-                    </div>
-                    <div class="sol-actions">
-                        <button class="btn btn-sm btn-outline-alt btn-block view-details-btn" data-system="bom-automation">View Framework Design</button>
-                    </div>
-                </div>
+.text-center {
+    text-align: center;
+}
 
-                <!-- System 4: Work Order Automation Workflow -->
-                <div class="solution-card">
-                    <div class="sol-header">
-                        <span class="status-indicator design">Structured Framework</span>
-                        <h3>Work Order Automation Workflow</h3>
-                    </div>
-                    <div class="sol-body-content">
-                        <p class="block-label">Problem:</p>
-                        <p class="block-text">Delays occur when routing confirmed sales orders to the production floor.</p>
-                        <p class="block-label">Approach:</p>
-                        <p class="block-text">Script automated workflows that generate and assign job cards instantly upon order close.</p>
-                        <p class="block-label">Business Outcome:</p>
-                        <p class="block-text font-highlight">Reduces planning lag and matches orders directly with machine schedules.</p>
-                    </div>
-                    <div class="sol-actions">
-                        <button class="btn btn-sm btn-outline-alt btn-block view-details-btn" data-system="work-order-automation">View Framework Design</button>
-                    </div>
-                </div>
+/* Common UI Elements */
+.section-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
 
-                <!-- System 5: Production Planning Framework -->
-                <div class="solution-card">
-                    <div class="sol-header">
-                        <span class="status-indicator design">Structured Framework</span>
-                        <h3>Production Planning Framework</h3>
-                    </div>
-                    <div class="sol-body-content">
-                        <p class="block-label">Problem:</p>
-                        <p class="block-text">Scheduling based on guesswork leads to line idle-time and missed delivery dates.</p>
-                        <p class="block-label">Approach:</p>
-                        <p class="block-text">Link dynamic capacity models with material arrival metrics.</p>
-                        <p class="block-label">Business Outcome:</p>
-                        <p class="block-text font-highlight">Improves line throughput and provides realistic customer delivery estimates.</p>
-                    </div>
-                    <div class="sol-actions">
-                        <button class="btn btn-sm btn-outline-alt btn-block view-details-btn" data-system="production-planning">View Framework Design</button>
-                    </div>
-                </div>
+.section-desc {
+    font-size: 1.05rem;
+    max-width: 750px;
+    margin: 0 auto 40px auto;
+}
 
-                <!-- System 6: Inspection & Reporting Framework -->
-                <div class="solution-card">
-                    <div class="sol-header">
-                        <span class="status-indicator design">Structured Framework</span>
-                        <h3>Inspection & Reporting Framework</h3>
-                    </div>
-                    <div class="sol-body-content">
-                        <p class="block-label">Problem:</p>
-                        <p class="block-text">Defect logs are kept on paper sheets, hiding scrap patterns and trends.</p>
-                        <p class="block-label">Approach:</p>
-                        <p class="block-text">Deploy mobile QC input checklists that record inspection metrics instantly on-site.</p>
-                        <p class="block-label">Business Outcome:</p>
-                        <p class="block-text font-highlight">Flags defects early and automatically restricts bad batches.</p>
-                    </div>
-                    <div class="sol-actions">
-                        <button class="btn btn-sm btn-outline-alt btn-block view-details-btn" data-system="inspection-reporting">View Framework Design</button>
-                    </div>
-                </div>
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
 
-                <!-- System 7: MIS Dashboard Systems -->
-                <div class="solution-card">
-                    <div class="sol-header">
-                        <span class="status-indicator design">Structured Framework</span>
-                        <h3>MIS Dashboard Systems</h3>
-                    </div>
-                    <div class="sol-body-content">
-                        <p class="block-label">Problem:</p>
-                        <p class="block-text">Management lacks clean daily metrics to monitor shift performance.</p>
-                        <p class="block-label">Approach:</p>
-                        <p class="block-text">Integrate output trackers with production databases for daily summaries.</p>
-                        <p class="block-label">Business Outcome:</p>
-                        <p class="block-text font-highlight">Replaces estimated data with clear line output metrics.</p>
-                    </div>
-                    <div class="sol-actions">
-                        <button class="btn btn-sm btn-outline-alt btn-block view-details-btn" data-system="mis-dashboard">View Framework Design</button>
-                    </div>
-                </div>
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.775rem;
+}
 
-                <!-- System 8: Document Control & Traceability -->
-                <div class="solution-card">
-                    <div class="sol-header">
-                        <span class="status-indicator design">Structured Framework</span>
-                        <h3>Document Control & Traceability</h3>
-                    </div>
-                    <div class="sol-body-content">
-                        <p class="block-label">Problem:</p>
-                        <p class="block-text">Operators mistakenly manufacture components using legacy engineering drawings.</p>
-                        <p class="block-label">Approach:</p>
-                        <p class="block-text">Build a centralized version-control library linked to active batch routes.</p>
-                        <p class="block-label">Business Outcome:</p>
-                        <p class="block-text font-highlight">Ensures drawings match current approvals to prevent assembly errors.</p>
-                    </div>
-                    <div class="sol-actions">
-                        <button class="btn btn-sm btn-outline-alt btn-block view-details-btn" data-system="document-control">View Framework Design</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+.btn-primary {
+    background-color: var(--accent);
+    color: #ffffff;
+}
 
-    <!-- Modal for Detailed Solutions (No empty product pages, no exaggeration) -->
-    <div id="details-modal" class="modal" aria-hidden="true">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modal-title">System Concept Details</h3>
-                <button class="close-modal-btn" aria-label="Close Detailed Info Modal">&times;</button>
-            </div>
-            <div class="modal-body" id="modal-body">
-                <!-- Content gets dynamically populated via script.js -->
-            </div>
-        </div>
-    </div>
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+}
 
-    <!-- Section 6: Case Study Format - Featured Showcase -->
-    <section id="showcase" class="showcase-section">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-badge">Case Study Format</span>
-                <h2>Task Management System</h2>
-                <p class="section-desc">Analyzing the active web application designed to handle task handovers and assignments across factory lines.</p>
-            </div>
+.btn-secondary {
+    background-color: var(--primary-light);
+    color: #ffffff;
+}
 
-            <!-- Case Study Structured Presentation -->
-            <div class="case-study-summary">
-                <div class="case-col">
-                    <div class="case-label">The Problem</div>
-                    <p>Departments were coordinating tasks using voice calls, WhatsApp, and physical notes. This resulted in missed tasks, shifting deadlines, lack of accountability, and communication breakdowns.</p>
-                </div>
-                <div class="case-col">
-                    <div class="case-label">The Solution</div>
-                    <p>Built a centralized task management system engineered for production environments. The tool defines ownership, monitors active status, tracks history logs, and manages attachments in one database.</p>
-                </div>
-                <div class="case-col">
-                    <div class="case-label">The Outcome</div>
-                    <p>Provides a clear source of truth for accountability and tracking, helping managers identify and address bottlenecks before they delay shipping schedules.</p>
-                </div>
-            </div>
+.btn-secondary:hover {
+    background-color: var(--primary);
+}
 
-            <!-- Main Interface Feature Panel -->
-            <div class="showcase-detail-grid">
-                <div class="showcase-features">
-                    <h3>Operational Control Points</h3>
-                    <div class="feature-bullet-item">
-                        <div class="bullet-circle"></div>
-                        <div>
-                            <strong>Ownership & Due Dates</strong>
-                            <p>Every task has one assignee, removing grey areas around who is responsible for execution.</p>
-                        </div>
-                    </div>
-                    <div class="feature-bullet-item">
-                        <div class="bullet-circle"></div>
-                        <div>
-                            <strong>Live Status Tracking</strong>
-                            <p>Move away from status updates. Track jobs instantly from Pending to Under Review to Completed.</p>
-                        </div>
-                    </div>
-                    <div class="feature-bullet-item">
-                        <div class="bullet-circle"></div>
-                        <div>
-                            <strong>Task History & Attachments</strong>
-                            <p>Store work logs, revisions, and quality photos directly within the task record for quick review.</p>
-                        </div>
-                    </div>
-                    <div class="feature-bullet-item">
-                        <div class="bullet-circle"></div>
-                        <div>
-                            <strong>Audit Trail & Visibility</strong>
-                            <p>Chronological logging prevents back-dated entries, giving you accurate data to optimize workflows.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="showcase-preview">
-                    <img id="main-showcase-img" src="images/task-dashboard.jpg" alt="Active Task Management System Dashboard" class="img-responsive main-preview-img">
-                </div>
-            </div>
+.btn-outline-alt {
+    background-color: transparent;
+    border-color: var(--border-color);
+    color: var(--primary-light);
+}
 
-            <!-- Image Gallery System (Fully Functional) -->
-            <div class="gallery-wrapper">
-                <h4>System Interface Exploration</h4>
-                <div class="gallery-grid">
-                    <div class="gallery-thumbnail active" data-img="images/task-dashboard.jpg">
-                        <img src="images/task-dashboard.jpg" alt="Task Dashboard Layout">
-                        <div class="thumb-caption">Task Dashboard</div>
-                    </div>
-                    <div class="gallery-thumbnail" data-img="images/task-delegation.jpg">
-                        <img src="images/task-delegation.jpg" alt="Task Delegation Details">
-                        <div class="thumb-caption">Task Delegation</div>
-                    </div>
-                    <div class="gallery-thumbnail" data-img="images/employee-database.jpg">
-                        <img src="images/employee-database.jpg" alt="Employee Database Management">
-                        <div class="thumb-caption">Employee Database</div>
-                    </div>
-                    <div class="gallery-thumbnail" data-img="images/profile-section.jpg">
-                        <img src="images/profile-section.jpg" alt="User Profile Details">
-                        <div class="thumb-caption">Profile Settings</div>
-                    </div>
-                    <div class="gallery-thumbnail" data-img="images/task-history.jpg">
-                        <img src="images/task-history.jpg" alt="Audit logs history page">
-                        <div class="thumb-caption">Task Logs</div>
-                    </div>
-                    <div class="gallery-thumbnail" data-img="images/secure-login.jpg">
-                        <img src="images/secure-login.jpg" alt="Secure Login Interface">
-                        <div class="thumb-caption">Secure Portal</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+.btn-outline-alt:hover {
+    background-color: var(--primary-light);
+    color: #ffffff;
+    border-color: var(--primary-light);
+}
 
-    <!-- Section 7: Why Many Manufacturing Systems Fail -->
-    <section id="fail-analysis" class="fail-analysis-section">
-        <div class="container text-center">
-            <span class="section-badge">Strategic Insight</span>
-            <h2>Why Many Manufacturing Systems Fail</h2>
-            <div class="fail-content-box">
-                <p class="lead-fail-text">Most manufacturing companies do not have a software problem. They have a workflow problem.</p>
-                <p class="body-fail-text">Technology is an amplifier of processes. When you automate an organized, robust process, you save time and resources. But when you automate a broken, chaotic process, you only speed up its failure.</p>
-                <p class="body-fail-text-accent">This is why Processwallah focuses on workflows first and technology second. We align and refine your physical operations on the floor before writing code.</p>
-            </div>
-        </div>
-    </section>
+.btn-block {
+    width: 100%;
+}
 
-    <!-- Section 8: Why Processwallah (Our Story) -->
-    <section id="why-story" class="why-story-section">
-        <div class="container">
-            <div class="story-grid">
-                <div class="story-content">
-                    <span class="section-badge">The Origin</span>
-                    <h2>The Processwallah Approach</h2>
-                    <p class="story-para">Working in factory operations, I saw how often standard enterprise software fell short. Many industrial systems are designed by software developers who have never worked on a hot, busy production floor. These systems end up being too complicated for operators, leading to manual workarounds on paper and spreadsheets.</p>
-                    <p class="story-para">Processwallah was created to bridge this gap. We build simple, robust, and reliable tools designed around how operators actually work. We focus on identifying process leaks first, and then build custom automations to create a practical, reliable tracking system for your business.</p>
-                </div>
-                <div class="story-highlight-box">
-                    <div class="why-brand-item">
-                        <h4>Manufacturing First</h4>
-                        <p>Our solutions are designed around production realities: inventory tracking, material planning, quality checks, and production schedules.</p>
-                    </div>
-                    <div class="why-brand-item">
-                        <h4>Practical Automation</h4>
-                        <p>We avoid overly complex technology. We build straightforward systems aimed directly at saving time and reducing errors.</p>
-                    </div>
-                    <div class="why-brand-item">
-                        <h4>Custom Workflows</h4>
-                        <p>We align our software to match your production processes, rather than forcing your team to change how they work to fit off-the-shelf software.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+/* Header & Sticky Navigation (Clean Premium Style) */
+.site-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-    <!-- Section 9: Services -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-badge">How I Work With You</span>
-                <h2>Services</h2>
-                <p class="section-desc">Practical engineering to help you transition from manual dependencies to systematic operations.</p>
-            </div>
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+}
 
-            <div class="services-grid">
-                <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-                    </div>
-                    <h3>Manufacturing Workflow Automation</h3>
-                    <p>Automate coordination pathways and material handoffs between different production stations.</p>
-                </div>
+.brand-logo {
+    max-height: 40px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
 
-                <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                    </div>
-                    <h3>Google Apps Script Development</h3>
-                    <p>Utilize existing spreadsheets and scripts to build cost-effective tracking tools without extra software costs.</p>
-                </div>
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
 
-                <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                    </div>
-                    <h3>AI Integrated Systems</h3>
-                    <p>Deploy localized language models to automate data extraction from bills of materials and supplier invoices.</p>
-                </div>
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
 
-                <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-                    </div>
-                    <h3>Custom Dashboards</h3>
-                    <p>Build live production dashboards that pull real-time data from floor logs and tracking sheets.</p>
-                </div>
+.main-nav a:hover {
+    color: var(--accent);
+}
 
-                <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
-                    </div>
-                    <h3>Process Control Systems</h3>
-                    <p>Integrate physical and digital checkpoints to catch defects early and maintain assembly quality.</p>
-                </div>
+.main-nav .nav-cta {
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--primary);
+}
 
-                <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                    </div>
-                    <h3>Manufacturing Web Applications</h3>
-                    <p>Develop dedicated database tools and web applications to support high-volume operations.</p>
-                </div>
+.main-nav .nav-cta:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
 
-                <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
-                    </div>
-                    <h3>Business Websites</h3>
-                    <p>Create clear corporate web profiles optimized for client trust, supply chains, and B2B procurement.</p>
-                </div>
+/* Mobile Nav Toggle Icon and Layout */
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    width: 24px;
+}
 
-                <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                    </div>
-                    <h3>Corporate Brochure Design</h3>
-                    <p>SOP manuals, product catalogs, and production flowcharts designed for clarity and corporate presentation.</p>
-                </div>
+.burger-bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+    transition: var(--transition);
+}
 
-                <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                    </div>
-                    <h3>Process Documentation</h3>
-                    <p>Write clear Standard Operating Procedures (SOPs) and map operational paths to guide your daily production teams.</p>
-                </div>
+/* Mobile Menu overlays */
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 72px);
+    background-color: #ffffff;
+    z-index: 99;
+    padding: 24px;
+    border-top: 1px solid var(--border-color);
+}
 
-                <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                    </div>
-                    <h3>Digital Transformation Consulting</h3>
-                    <p>Work directly with manufacturing owners to select appropriate software, plan modernization, and guide teams.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+.mobile-menu-overlay.active {
+    display: block;
+}
 
-    <!-- Section 10 & 11: CTA / Trust / Contact Details -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="contact-grid">
-                
-                <!-- Trust & Coordinates Block -->
-                <div class="contact-info-panel">
-                    <span class="section-badge">Analyze Your Workflow</span>
-                    <h2>Book Free Process Review</h2>
-                    <p class="contact-desc">Let's discuss your current operational challenges. We will map your physical processes and identify practical opportunities to automate manual steps.</p>
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
 
-                    <!-- Trust Pillars -->
-                    <div class="trust-pillars-container">
-                        <div class="trust-pillar-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                            <div>
-                                <h4>7+ Years Manufacturing Experience</h4>
-                                <p>On-the-ground operational background across multiple factory environments.</p>
-                            </div>
-                        </div>
-                        <div class="trust-pillar-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
-                            <div>
-                                <h4>Factory Floor Understanding</h4>
-                                <p>Solutions built specifically for busy manufacturing environments and actual operator habits.</p>
-                            </div>
-                        </div>
-                        <div class="trust-pillar-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                            <div>
-                                <h4>End-To-End Workflow Exposure</h4>
-                                <p>Direct experience managing sales pipelines through planning, quality control, and shipping.</p>
-                            </div>
-                        </div>
-                    </div>
+.mobile-link {
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 10px;
+}
 
-                    <!-- Explicit Contact Links -->
-                    <div class="contact-links-box">
-                        <div class="coord-item">
-                            <svg class="coord-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                            </svg>
-                            <div>
-                                <span class="coord-label">Mobile & WhatsApp</span>
-                                <a href="tel:6392762264" class="coord-link">6392762264</a>
-                            </div>
-                        </div>
-                        <div class="coord-item">
-                            <svg class="coord-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                            <div>
-                                <span class="coord-label">General Contact Email</span>
-                                <a href="mailto:info@processwallah.com" class="coord-link">info@processwallah.com</a>
-                            </div>
-                        </div>
-                        <div class="coord-item">
-                            <svg class="coord-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                            <div>
-                                <span class="coord-label">Technical Consultant Email</span>
-                                <a href="mailto:arshi@processwallah.com" class="coord-link">arshi@processwallah.com</a>
-                            </div>
-                        </div>
-                        <div class="coord-item">
-                            <svg class="coord-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                            <div>
-                                <span class="coord-label">LinkedIn Professional Network</span>
-                                <a href="https://www.linkedin.com/in/ahmed-arshi-97329040b" target="_blank" rel="noopener noreferrer" class="coord-link">linkedin.com/in/ahmed-arshi-97329040b</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+.btn-mobile-contact {
+    background-color: var(--accent);
+    color: #ffffff;
+    text-align: center;
+    border-bottom: none;
+    padding: 12px;
+    border-radius: var(--border-radius);
+}
 
-                <!-- Form Panel -->
-                <div class="contact-form-panel">
-                    <form action="https://formsubmit.co/info@processwallah.com" method="POST" class="contact-form">
-                        <!-- Anti-spam honey pot -->
-                        <input type="text" name="_honey" style="display:none">
-                        <input type="hidden" name="_template" value="box">
-                        <input type="hidden" name="_subject" value="New Processwallah Consultation Request">
+/* Hero Section */
+.hero-section {
+    padding: 60px 0;
+    background-color: var(--bg-light);
+    border-bottom: 1px solid var(--border-color);
+}
 
-                        <div class="form-group">
-                            <label for="client-name">Your Name</label>
-                            <input type="text" id="client-name" name="name" required placeholder="John Doe">
-                        </div>
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 40px;
+    align-items: center;
+}
 
-                        <div class="form-group">
-                            <label for="client-email">Work Email</label>
-                            <input type="email" id="client-email" name="email" required placeholder="john@manufacturing-firm.com">
-                        </div>
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 18px;
+    color: var(--primary);
+}
 
-                        <div class="form-group">
-                            <label for="client-phone">Phone / WhatsApp</label>
-                            <input type="tel" id="client-phone" name="phone" required placeholder="9876543210">
-                        </div>
+.hero-subheadline {
+    font-size: 1.1rem;
+    line-height: 1.55;
+    margin-bottom: 28px;
+}
 
-                        <div class="form-group">
-                            <label for="factory-domain">Manufacturing Area</label>
-                            <select id="factory-domain" name="factory_domain">
-                                <option value="machinery">Industrial Tooling & Machinery</option>
-                                <option value="automotive">Automotive & Allied Engineering</option>
-                                <option value="electronics">Electronics Assembly & OEM</option>
-                                <option value="process">Batch & Process Manufacturing</option>
-                                <option value="plastics">Plastics & Molding</option>
-                                <option value="other">Other Industrial Sector</option>
-                            </select>
-                        </div>
+.hero-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 10px;
+    border-radius: var(--border-radius);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
 
-                        <div class="form-group">
-                            <label for="bottleneck-desc">Describe Your Primary Process Bottleneck</label>
-                            <textarea id="bottleneck-desc" name="bottleneck_description" rows="5" required placeholder="Explain where production delays occur or what manual workflows require optimization..."></textarea>
-                        </div>
+.hero-actions {
+    display: flex;
+    gap: 12px;
+}
 
-                        <button type="submit" class="btn btn-primary btn-block">Let's Analyze Your Workflow</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+.image-wrapper {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 6px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container footer-bottom">
-            <p>&copy; 2025 Processwallah. All rights reserved.</p>
-            <p>Manufacturing Digital Transformation, Automation Systems & Process Control Consulting.</p>
-        </div>
-    </footer>
+.hero-img {
+    border-radius: 1px;
+}
 
-    <!-- Section 12: Image Guide (Rendered clearly at the bottom as part of standard site parameters) -->
-    <section class="image-guide-section">
-        <div class="container">
-            <h4 class="guide-title">Required Website System Assets</h4>
-            <div class="table-responsive">
-                <table class="guide-table">
-                    <thead>
-                        <tr>
-                            <th>File Name</th>
-                            <th>Recommended Size</th>
-                            <th>Website Section</th>
-                            <th>Purpose</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>profile.jpg</code></td>
-                            <td>800 x 800 px (1:1 Aspect Ratio)</td>
-                            <td>Section 2 — Founder Positioning</td>
-                            <td>Professional profile portrait of Ahmed Arshi.</td>
-                        </tr>
-                        <tr>
-                            <td><code>task-dashboard.jpg</code></td>
-                            <td>1200 x 800 px</td>
-                            <td>Section 1 — Hero & Section 5 / 6</td>
-                            <td>Interface screenshot of the active Task Management System Dashboard.</td>
-                        </tr>
-                        <tr>
-                            <td><code>task-delegation.jpg</code></td>
-                            <td>1200 x 800 px</td>
-                            <td>Section 6 — Featured Showcase Gallery</td>
-                            <td>Screenshot displaying task delegation controls and priority settings.</td>
-                        </tr>
-                        <tr>
-                            <td><code>employee-database.jpg</code></td>
-                            <td>1200 x 800 px</td>
-                            <td>Section 6 — Featured Showcase Gallery</td>
-                            <td>Screenshot displaying staff rosters and secure platform permission access levels.</td>
-                        </tr>
-                        <tr>
-                            <td><code>profile-section.jpg</code></td>
-                            <td>1200 x 800 px</td>
-                            <td>Section 6 — Featured Showcase Gallery</td>
-                            <td>Screenshot of the individual user profile, settings, and notification configurations.</td>
-                        </tr>
-                        <tr>
-                            <td><code>task-history.jpg</code></td>
-                            <td>1200 x 800 px</td>
-                            <td>Section 6 — Featured Showcase Gallery</td>
-                            <td>Screenshot demonstrating chronological audit trails, logs, and process updates.</td>
-                        </tr>
-                        <tr>
-                            <td><code>secure-login.jpg</code></td>
-                            <td>1200 x 800 px</td>
-                            <td>Section 6 — Featured Showcase Gallery</td>
-                            <td>Screenshot displaying user authorization and secure factory login portals.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+/* Section 4: Trust Section below Hero */
+.trust-section {
+    padding: 60px 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.trust-card {
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.trust-card:hover {
+    border-color: var(--accent);
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.trust-card-meta {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+}
+
+.trust-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.trust-card p {
+    font-size: 0.8rem;
+    margin: 0;
+    line-height: 1.45;
+}
+
+/* Section 5: Improved About Section */
+.about-section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.profile-card {
+    border: 1px solid var(--border-color);
+    padding: 6px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.profile-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    filter: grayscale(1);
+    transition: var(--transition);
+}
+
+.profile-card:hover .profile-img {
+    filter: grayscale(0);
+}
+
+.profile-overlay-info {
+    padding: 14px 6px 6px 6px;
+}
+
+.profile-overlay-info h3 {
+    margin-bottom: 2px;
+    font-size: 1.15rem;
+}
+
+.profile-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0;
+}
+
+.about-intro {
+    font-size: 1.15rem;
+    color: var(--primary);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.about-body {
+    margin-bottom: 16px;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.observed-challenges-list {
+    list-style: none;
+    margin-bottom: 28px;
+}
+
+.observed-challenges-list li {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 18px;
+}
+
+.observed-challenges-list li::before {
+    content: "•";
+    position: absolute;
+    left: 4px;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.about-goal-box {
+    background-color: var(--bg-light);
+    border-left: 3px solid var(--accent);
+    padding: 16px;
+    border-radius: var(--border-radius);
+}
+
+.goal-tag {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+}
+
+.about-goal-box p {
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Section 6: Before vs After Section */
+.before-after-section {
+    padding: 80px 0;
+    background-color: var(--bg-light);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.before-after-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.comparison-card {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    border-radius: var(--border-radius);
+}
+
+.state-before {
+    border-top: 4px solid #ef4444;
+}
+
+.state-after {
+    border-top: 4px solid #10b981;
+}
+
+.state-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.state-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.state-dot.red { background-color: #ef4444; }
+.state-dot.green { background-color: #10b981; }
+
+.state-header h3 {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+}
+
+.comparison-details {
+    list-style: none;
+}
+
+.comparison-details li {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 18px;
+}
+
+.comparison-details li:last-child {
+    margin-bottom: 0;
+}
+
+.state-before .comparison-details li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    color: #ef4444;
+    font-weight: 700;
+}
+
+.state-after .comparison-details li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: 700;
+}
+
+/* Section 5: Systems & Solutions */
+.systems-section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.solution-card {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition);
+}
+
+.solution-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.solution-card.featured {
+    border: 2px solid var(--primary);
+}
+
+.status-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 1px;
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+}
+
+.status-badge.ready {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.status-badge.build {
+    background-color: #fef3c7;
+    color: #b45309;
+}
+
+.status-badge.design {
+    background-color: #f1f5f9;
+    color: #475569;
+}
+
+.solution-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+}
+
+.sol-body-content {
+    margin-bottom: 18px;
+    flex-grow: 1;
+}
+
+.meta-block {
+    margin-bottom: 10px;
+}
+
+.meta-block:last-of-type {
+    margin-bottom: 0;
+}
+
+.meta-label {
+    display: block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 2px;
+}
+
+.meta-block p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.highlighted-outcome {
+    color: var(--primary) !important;
+    font-weight: 700;
+}
+
+/* Modal details overlay */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.65);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 580px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+    overflow: hidden;
+    animation: modalSlide 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalSlide {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.close-modal-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.modal-section {
+    margin-bottom: 16px;
+}
+
+.modal-section:last-of-type {
+    margin-bottom: 0;
+}
+
+.modal-section-title {
+    font-size: 0.725rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+}
+
+.modal-section p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--primary-light);
+    margin: 0;
+}
+
+/* Section 7: Case Study Format - Task Management System */
+.case-studies-section {
+    padding: 80px 0;
+    background-color: var(--bg-light);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.case-study-showcase-container {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 48px;
+}
+
+.case-study-details-card {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.case-block .case-badge-meta {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+    letter-spacing: 0.03em;
+}
+
+.case-block p {
+    font-size: 0.825rem;
+    line-height: 1.5;
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.success-outcome {
+    color: var(--primary) !important;
+    font-weight: 700;
+}
+
+.case-study-visual-preview {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 6px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.main-preview-img {
+    border-radius: 1px;
+    transition: var(--transition);
+}
+
+/* Gallery inside Case Studies */
+.gallery-wrapper {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    border-radius: var(--border-radius);
+}
+
+.gallery-wrapper h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+}
+
+.gallery-thumbnail {
+    cursor: pointer;
+    border: 2px solid transparent;
+    padding: 2px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    background-color: var(--bg-light);
+}
+
+.gallery-thumbnail img {
+    border-radius: 1px;
+    aspect-ratio: 1.5;
+    object-fit: cover;
+}
+
+.gallery-thumbnail.active {
+    border-color: var(--accent);
+}
+
+.thumb-caption {
+    font-size: 0.675rem;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 4px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.gallery-thumbnail.active .thumb-caption {
+    color: var(--primary);
+}
+
+/* Section 8: Why Processwallah Section */
+.why-processwallah-section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.why-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.why-story-box {
+    margin-top: 24px;
+}
+
+.story-lead {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.story-p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.story-p-highlight {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Section 9: Who I Help Section */
+.who-i-help-section {
+    padding: 80px 0;
+    background-color: var(--bg-light);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.help-card {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.help-card:hover {
+    border-color: var(--accent);
+}
+
+.help-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.help-card p {
+    font-size: 0.8rem;
+    margin: 0;
+    line-height: 1.45;
+}
+
+/* Section 9: Services */
+.services-section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.service-card {
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+    padding: 24px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    border-color: var(--primary);
+    background-color: #ffffff;
+}
+
+.service-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+}
+
+.service-card p {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    margin: 0;
+}
+
+/* Section 10: Contact Block */
+.contact-section {
+    padding: 80px 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.contact-desc {
+    margin-bottom: 32px;
+}
+
+.consultation-value-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+}
+
+.value-bullet {
+    display: flex;
+    gap: 12px;
+}
+
+.bullet-marker {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    margin-top: 8px;
+    flex-shrink: 0;
+}
+
+.value-bullet h4 {
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+}
+
+.value-bullet p {
+    font-size: 0.775rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.direct-contact-block p {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    color: var(--primary);
+}
+
+.inline-contact-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.inline-contact-link:hover {
+    text-decoration: underline;
+}
+
+.contact-form-panel {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    border-radius: var(--border-radius);
+}
+
+.consultation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group label {
+    font-size: 0.725rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: #ffffff;
+    font-family: var(--font-family);
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Footer Section */
+.site-footer {
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 48px 0 24px 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    border-bottom: 1px solid var(--primary-light);
+    padding-bottom: 32px;
+    margin-bottom: 24px;
+}
+
+.footer-logo {
+    max-height: 44px;
+    margin-bottom: 12px;
+}
+
+.footer-p-meta {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: #cbd5e1;
+    margin: 0;
+}
+
+.footer-grid h4 {
+    color: #ffffff;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+}
+
+.footer-grid p {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-bottom: 8px;
+}
+
+.footer-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-link:hover {
+    color: var(--accent);
+}
+
+.footer-credits {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-credits p {
+    font-size: 0.725rem;
+    margin: 0;
+    color: #64748b;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .hero-grid,
+    .about-grid,
+    .before-after-grid,
+    .case-study-showcase-container,
+    .contact-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .about-image-column {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .mobile-nav-toggle {
+        display: flex;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 1.85rem; }
+    h2 { font-size: 1.45rem; }
+    .hero-section { padding: 40px 0; }
+    .contact-form-panel { padding: 20px; }
+}
