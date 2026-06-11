@@ -1,6 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-
-    // 1. Detailed System Architecture Profiles for Modal Rendering
+// 1. Detailed System Architecture Profiles for Modal Rendering
     const systemDatabase = {
         'customer-portal': {
             title: 'Customer Portal Framework',
