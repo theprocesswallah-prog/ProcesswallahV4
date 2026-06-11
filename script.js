@@ -3,46 +3,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Detailed System Architecture Profiles for Modal Rendering
     const systemDatabase = {
         'customer-portal': {
-            title: 'Customer Portal Structure',
-            problem: 'Clients rely on continuous phone threads, emails, and calls to request purchase order completion data and dispatch schedules.',
-            approach: 'Establish a read-only secure database portal pulling dispatch details directly from warehouse floor registers.',
-            outcome: 'Substantially reduces redundant administrative support time and provides distributors with transparent shipping updates.'
+            title: 'Customer Portal Framework',
+            problem: 'Customers frequently contact internal teams for order updates, status reports, certificate access, and complaint updates.',
+            approach: 'A secure, centralized customer portal providing customers with secure, direct access to active orders, documents, reports, and communication logs.',
+            outcome: 'Significantly improves customer transparency, reduces internal operational coordination, and shortens response timelines.'
         },
         'bom-automation': {
             title: 'BOM Automation Framework',
-            problem: 'Manual multi-level Bill of Materials parsing introduces purchase ordering mistakes, delaying production starts.',
-            approach: 'Write script validations that automatically crosscheck product design outputs with current physical inventory items.',
-            outcome: 'Corrects inventory estimation human errors and eliminates downtime caused by short stock.'
+            problem: 'Inaccurate material planning, excess or shortage of raw materials, and duplicate procurement activities due to non-standard product structures.',
+            approach: 'A structured BOM automation framework that automatically calculates multi-level material requirements and integrates design parameters directly into store calculations.',
+            outcome: 'Saves critical engineering planning hours, improves purchase ordering accuracy, and optimizes baseline material inventories.'
         },
         'work-order-automation': {
             title: 'Work Order Automation Workflow',
-            problem: 'Delays transitioning newly-confirmed purchase agreements into physical route logs and tool setups.',
-            approach: 'Deploy database automated triggers to instantly convert approved orders into shop-floor task queues.',
-            outcome: 'Minimizes setup wait time and keeps active production closely matched with purchase orders.'
+            problem: 'Manual work order preparation, approval bottlenecks, missing production instructions, and lack of real-time execution tracking.',
+            approach: 'A structured workflow to instantly generate, distribute, track, and monitor job cards throughout the active production lifecycle on the floor.',
+            outcome: 'Drastically accelerates work order transitions, clarifies step-by-step responsibilities, and provides automated stage notifications.'
         },
         'production-planning': {
             title: 'Production Planning Framework',
-            problem: 'Inflexible manufacturing scheduling based on estimations, creating station blocks and delivery delays.',
-            approach: 'Create integrated capacity layouts that crosscheck shift targets directly with supplier raw material arrival trackers.',
-            outcome: 'Smooths floor throughout bottlenecks and gives client managers accurate shipping timelines.'
-        },
-        'inspection-reporting': {
-            title: 'Inspection & Reporting Framework',
-            problem: 'Defect sheets are kept on paper registers, hiding manufacturing scrap and quality patterns.',
-            approach: 'Implement mobile floor data templates allowing point-of-inspection quality logs to directly map to defect charts.',
-            outcome: 'Saves time, isolates raw-material quality issues, and prevents defective units from shipping.'
-        },
-        'mis-dashboard': {
-            title: 'MIS Dashboard Systems',
-            problem: 'Management reviews weekly metrics days after shifts are closed, making real-time corrections impossible.',
-            approach: 'Compile output logs into clear, dynamic, and integrated analytics boards updated during the active shift.',
-            outcome: 'Replaces guessed output numbers with exact data, helping management identify process bottlenecks immediately.'
+            problem: 'Frequent production rescheduling, capacity planning constraints, material availability uncertainty, and WIP accumulation on the floor.',
+            approach: 'A structured capacity planning framework aligning customer demand, live raw material inventories, shift capabilities, and floor bottleneck priorities.',
+            outcome: 'Improves shift throughput, minimizes resource idle times, and provides client managers with highly accurate shipping commitments.'
         },
         'document-control': {
-            title: 'Document Control & Traceability',
-            problem: 'Production floor teams occasionally manufacture tooling components using outdated drawing versions.',
-            approach: 'Build a centralized version-controlled document index linked to active job schedules on shop floor terminals.',
-            outcome: 'Eliminates product waste caused by assembly errors and supports ISO audit tracking.'
+            title: 'Store Operations Control Framework',
+            problem: 'Inventory visibility issues, dead stock accumulation, inventory mismatches, delayed shortage reporting, and uncontrolled material movement.',
+            approach: 'A structured store control framework enforcing strict FIFO management, standardized inward audits, and work-order-based material issuance limits.',
+            outcome: 'Establishes absolute inventory accuracy, optimizes physical warehouse space, and eliminates manual stock validation gaps.'
         }
     };
 
@@ -60,15 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalTitle.textContent = data.title;
                 modalBody.innerHTML = `
                     <div class="modal-section">
-                        <div class="modal-section-title">The Problem</div>
+                        <div class="modal-section-title">Operational Challenge</div>
                         <p>${data.problem}</p>
                     </div>
                     <div class="modal-section">
-                        <div class="modal-section-title">Practical Approach</div>
+                        <div class="modal-section-title">Processwallah Solution</div>
                         <p>${data.approach}</p>
                     </div>
                     <div class="modal-section">
-                        <div class="modal-section-title">Business Outcome</div>
+                        <div class="modal-section-title">Expected Outcome</div>
                         <p>${data.outcome}</p>
                     </div>
                 `;
