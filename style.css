@@ -191,7 +191,7 @@ p {
 }
 
 .brand-logo {
-    height: 64px; /* Increased from 38px to make the logo fully visible and readable on desktop */
+    height: 75px; /* Increased from 38px to make the logo fully visible and readable on desktop */
     width: auto;
     object-fit: contain;
     display: block;
