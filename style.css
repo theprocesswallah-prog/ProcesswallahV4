@@ -182,7 +182,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 88px; /* Increased from 72px to accommodate the taller logo cleanly */
+    height: 88px; 
 }
 
 .logo-link {
@@ -191,7 +191,7 @@ p {
 }
 
 .brand-logo {
-    height: 75px; /* Increased from 38px to make the logo fully visible and readable on desktop */
+    height: 75px; 
     width: auto;
     object-fit: contain;
     display: block;
@@ -381,7 +381,7 @@ p {
 /* Redesigned Card with increased white space & text focus */
 .trust-card {
     border: 1px solid var(--border-color);
-    padding: 40px 36px; /* Generous padding for high whitespace */
+    padding: 40px 36px; 
     background-color: #ffffff;
     border-radius: var(--border-radius);
     transition: var(--transition);
@@ -403,14 +403,14 @@ p {
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 24px;
-    color: var(--navy); /* Accentuated strictly with Navy blue */
+    color: var(--navy); 
 }
 
 /* Strictly cap SVG rendering to prevent giant icons */
 .trust-icon {
     width: 32px;
     height: 32px;
-    stroke-width: 1.5; /* Premium thin line styling */
+    stroke-width: 1.5; 
 }
 
 .trust-card h3 {
@@ -901,17 +901,24 @@ p {
 
 /* Why Processwallah Section */
 .why-processwallah-section {
-    padding: 80px 0;
+    padding: 100px 0;
+    background-color: var(--bg-light);
     border-bottom: 1px solid var(--border-color);
 }
 
 .why-wrapper {
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
 }
 
 .why-story-box {
-    margin-top: 24px;
+    margin-top: 32px;
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 48px;
+    border-radius: var(--border-radius);
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
 }
 
 .story-lead {
@@ -1141,7 +1148,7 @@ p {
 }
 
 .footer-logo {
-    height: 44px; /* Explicitly overrides base brand-logo height to preserve the footer layout */
+    height: 44px; 
     max-height: 44px;
     width: auto;
     object-fit: contain;
@@ -1196,11 +1203,11 @@ p {
 /* Responsive Rules */
 @media (max-width: 992px) {
     .header-container {
-        height: 76px; /* Adjusted to balance the 55px tablet logo */
+        height: 76px; 
     }
 
     .site-header .brand-logo {
-        height: 55px; /* Tablet-specific logo height */
+        height: 55px; 
     }
 
     .hero-grid,
@@ -1233,11 +1240,11 @@ p {
 
 @media (max-width: 768px) {
     .header-container {
-        height: 64px; /* Adjusted to balance the 45px mobile logo */
+        height: 64px; 
     }
 
     .site-header .brand-logo {
-        height: 45px; /* Mobile-specific logo height */
+        height: 45px; 
     }
 
     h1 { font-size: 1.85rem; }
@@ -1245,7 +1252,6 @@ p {
     .hero-section { padding: 40px 0; }
     .contact-form-panel { padding: 20px; }
 }
-/* Update these values in style.css after replacing the logo file */
 
 .site-header {
     background-color: #ffffff;
@@ -1253,12 +1259,4 @@ p {
     position: sticky;
     top: 0;
     z-index: 100;
-}
-
-/* Keeps a standard, clean navbar height */
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 72px; 
 }
