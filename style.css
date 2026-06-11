@@ -1262,30 +1262,3 @@ p {
     align-items: center;
     height: 72px; 
 }
-
-/* Because the logo no longer has empty padding, these heights are highly visible */
-.brand-logo {
-    height: 60px; /* Desktop: Perfectly balanced, highly readable */
-    width: auto;
-    object-fit: contain;
-    display: block;
-}
-
-/* Responsive Overrides */
-@media (max-width: 992px) {
-    .header-container {
-        height: 68px;
-    }
-    .site-header .brand-logo {
-        height: 42px; /* Tablet: Highly legible scale */
-    }
-}
-
-@media (max-width: 768px) {
-    .header-container {
-        height: 60px;
-    }
-    .site-header .brand-logo {
-        height: 36px; /* Mobile: Optimized for restricted mobile widths */
-    }
-}
