@@ -1265,7 +1265,7 @@ p {
 
 /* Because the logo no longer has empty padding, these heights are highly visible */
 .brand-logo {
-    height: 48px; /* Desktop: Perfectly balanced, highly readable */
+    height: 60px; /* Desktop: Perfectly balanced, highly readable */
     width: auto;
     object-fit: contain;
     display: block;
