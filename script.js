@@ -146,36 +146,96 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // 4. Consultation Form Submissions Interceptor (Prefills Client mailto)
+    // 4. Consultation Form Submissions Interceptor (Apps Script Web App Post)
     const consultationForm = document.querySelector('.consultation-form');
     if (consultationForm) {
-        consultationForm.addEventListener('submit', (e) => {
+        consultationForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            const submitBtn = consultationForm.querySelector('button[type="submit"]');
+            const formPanel = document.querySelector('.contact-form-panel');
+
+            // Collect form fields defensively
             const nameEl = document.getElementById('form-name');
             const companyEl = document.getElementById('form-company');
             const emailEl = document.getElementById('form-email');
             const mobileEl = document.getElementById('form-mobile');
             const messageEl = document.getElementById('form-message');
 
-            if (nameEl && companyEl && emailEl && mobileEl && messageEl) {
-                const name = nameEl.value;
-                const company = companyEl.value;
-                const email = emailEl.value;
-                const mobile = mobileEl.value;
-                const message = messageEl.value;
+            if (nameEl && companyEl && emailEl && mobileEl && messageEl && submitBtn && formPanel) {
+                const name = nameEl.value.trim();
+                const company = companyEl.value.trim();
+                const email = emailEl.value.trim();
+                const mobile = mobileEl.value.trim();
+                const message = messageEl.value.trim();
 
-                const subject = encodeURIComponent(`Processwallah Consultation Request — ${company}`);
-                const body = encodeURIComponent(
-                    `Name: ${name}\n` +
-                    `Company: ${company}\n` +
-                    `Email: ${email}\n` +
-                    `Mobile: ${mobile}\n\n` +
-                    `Describe Your Primary Process Bottleneck:\n${message}`
-                );
+                // Store original button text and disable to prevent concurrent double-submissions
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending Inquiry...';
 
-                // Triggers standard operating mail client cleanly with prefilled values
-                window.location.href = `mailto:info@processwallah.com?subject=${subject}&body=${body}`;
+                // Construct form data payload
+                const payload = {
+                    name: name,
+                    company: company,
+                    email: email,
+                    mobile: mobile,
+                    message: message
+                };
+
+                // Google Apps Script Web App Deployment URL
+                const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxCLUm-QyGVLpNeSXyY-m5FTdvlFWWj07e_2JpSkz6LIduA47G2wIW1OoDpti9d3o8vLg/exec'; // Replace this URL after Google deployment
+
+                try {
+                    // Send cross-origin JSON post payload asynchronously
+                    await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', // Bypasses CORS browser redirect sandboxing
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    // Render success confirmation card replacing standard input elements
+                    formPanel.innerHTML = `
+                        <div class="submission-success-card">
+                            <div class="success-icon-container">
+                                <svg viewBox="0 0 24 24" class="success-icon">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <h3 class="success-title">Thank you for contacting Processwallah</h3>
+                            <p class="success-desc">Your inquiry has been received successfully.</p>
+                            <p class="success-subdesc">We will review your workflow requirements and contact you shortly.</p>
+                            <div class="redirect-loader"></div>
+                        </div>
+                    `;
+
+                    // Graceful redirect to root index page after 2.5 seconds
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 2500);
+
+                } catch (error) {
+                    console.error('Submission encountered an error:', error);
+
+                    // Remove previous inline errors if they exist
+                    const existingError = consultationForm.querySelector('.submission-error-alert');
+                    if (existingError) {
+                        existingError.remove();
+                    }
+
+                    // Render structured visual alert block directly inside card
+                    const errorAlert = document.createElement('div');
+                    errorAlert.className = 'submission-error-alert';
+                    errorAlert.textContent = 'Transmission failed. Please verify your connection parameters and try again.';
+                    consultationForm.insertBefore(errorAlert, submitBtn.parentNode);
+
+                    // Re-enable interactive elements to restore submission capability
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
             }
         });
     }
