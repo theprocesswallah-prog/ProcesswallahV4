@@ -1,4 +1,6 @@
-// 1. Detailed System Architecture Profiles for Modal Rendering
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. Detailed System Architecture Profiles for Modal Rendering
     const systemDatabase = {
         'customer-portal': {
             title: 'Customer Portal Framework',
@@ -42,7 +44,7 @@
             const systemKey = e.currentTarget.getAttribute('data-system');
             const data = systemDatabase[systemKey];
 
-            if (data) {
+            if (data && modalTitle && modalBody && modal) {
                 modalTitle.textContent = data.title;
                 modalBody.innerHTML = `
                     <div class="modal-section">
@@ -66,20 +68,27 @@
     });
 
     const hideModal = () => {
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
+        if (modal) {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
     };
 
-    closeModalBtn.addEventListener('click', hideModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            hideModal();
-        }
-    });
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', hideModal);
+    }
+    
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                hideModal();
+            }
+        });
+    }
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
             hideModal();
         }
     });
@@ -89,22 +98,24 @@
     const galleryThumbs = document.querySelectorAll('.gallery-thumbnail');
     const mainCaseImg = document.getElementById('main-case-img');
 
-    galleryThumbs.forEach(thumb => {
-        thumb.addEventListener('click', (e) => {
-            galleryThumbs.forEach(t => t.classList.remove('active'));
+    if (galleryThumbs && mainCaseImg) {
+        galleryThumbs.forEach(thumb => {
+            thumb.addEventListener('click', (e) => {
+                galleryThumbs.forEach(t => t.classList.remove('active'));
 
-            const selectedThumb = e.currentTarget;
-            selectedThumb.classList.add('active');
+                const selectedThumb = e.currentTarget;
+                selectedThumb.classList.add('active');
 
-            const sourceImage = selectedThumb.getAttribute('data-img');
-            
-            mainCaseImg.style.opacity = '0.4';
-            setTimeout(() => {
-                mainCaseImg.setAttribute('src', sourceImage);
-                mainCaseImg.style.opacity = '1';
-            }, 120);
+                const sourceImage = selectedThumb.getAttribute('data-img');
+                
+                mainCaseImg.style.opacity = '0.4';
+                setTimeout(() => {
+                    mainCaseImg.setAttribute('src', sourceImage);
+                    mainCaseImg.style.opacity = '1';
+                }, 120);
+            });
         });
-    });
+    }
 
 
     // 3. Mobile Navigation Controls (Hamburger Integration)
@@ -113,43 +124,59 @@
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
     const toggleMobileMenu = () => {
-        mobileMenuOverlay.classList.toggle('active');
-        mobileNavToggle.classList.toggle('active');
-        document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
+        if (mobileMenuOverlay && mobileNavToggle) {
+            mobileMenuOverlay.classList.toggle('active');
+            mobileNavToggle.classList.toggle('active');
+            document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
+        }
     };
 
-    mobileNavToggle.addEventListener('click', toggleMobileMenu);
+    if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', toggleMobileMenu);
+    }
 
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuOverlay.classList.remove('active');
-            mobileNavToggle.classList.remove('active');
-            document.body.style.overflow = '';
+    if (mobileLinks && mobileMenuOverlay && mobileNavToggle) {
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuOverlay.classList.remove('active');
+                mobileNavToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
         });
-    });
+    }
 
 
     // 4. Consultation Form Submissions Interceptor (Prefills Client mailto)
     const consultationForm = document.querySelector('.consultation-form');
-    consultationForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    if (consultationForm) {
+        consultationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-        const name = document.getElementById('form-name').value;
-        const company = document.getElementById('form-company').value;
-        const email = document.getElementById('form-email').value;
-        const mobile = document.getElementById('form-mobile').value;
-        const message = document.getElementById('form-message').value;
+            const nameEl = document.getElementById('form-name');
+            const companyEl = document.getElementById('form-company');
+            const emailEl = document.getElementById('form-email');
+            const mobileEl = document.getElementById('form-mobile');
+            const messageEl = document.getElementById('form-message');
 
-        const subject = encodeURIComponent(`Processwallah Consultation Request — ${company}`);
-        const body = encodeURIComponent(
-            `Name: ${name}\n` +
-            `Company: ${company}\n` +
-            `Email: ${email}\n` +
-            `Mobile: ${mobile}\n\n` +
-            `Describe Your Primary Process Bottleneck:\n${message}`
-        );
+            if (nameEl && companyEl && emailEl && mobileEl && messageEl) {
+                const name = nameEl.value;
+                const company = companyEl.value;
+                const email = emailEl.value;
+                const mobile = mobileEl.value;
+                const message = messageEl.value;
 
-        // Triggers standard operating mail client cleanly with prefilled values
-        window.location.href = `mailto:info@processwallah.com?subject=${subject}&body=${body}`;
-    });
+                const subject = encodeURIComponent(`Processwallah Consultation Request — ${company}`);
+                const body = encodeURIComponent(
+                    `Name: ${name}\n` +
+                    `Company: ${company}\n` +
+                    `Email: ${email}\n` +
+                    `Mobile: ${mobile}\n\n` +
+                    `Describe Your Primary Process Bottleneck:\n${message}`
+                );
+
+                // Triggers standard operating mail client cleanly with prefilled values
+                window.location.href = `mailto:info@processwallah.com?subject=${subject}&body=${body}`;
+            }
+        });
+    }
 });
